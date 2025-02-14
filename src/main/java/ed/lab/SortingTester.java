@@ -37,7 +37,7 @@ public class SortingTester<T extends Comparable<T>> {
                 .mapToLong(Duration::toMillis)
                 .sum();
 
-        System.out.printf("\t\tSumatoria del tiempo\n", sum);
+        System.out.printf("\t\tSumatoria del tiempo\n", sum); //avafdv
 
         double division = sum / average;
         System.out.printf("\t\tTiempo promedio: %s ms\n", division);
