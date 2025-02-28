@@ -1,17 +1,37 @@
 package ed.lab;
+import java.util.Random;
 
 public class Main {
-    private static final ArrayGenerator<Integer> sortedArrayGenerator = null; // Reemplácelo por una función lambda
 
-    private static final ArrayGenerator<Integer> invertedArrayGenerator = null; // Reemplácelo por una función lambda
+    private static final ArrayGenerator<Integer> sortedArrayGenerator = (length) -> {
+        Integer[] array = new Integer[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = Integer.valueOf(i);
+        };
+        return array;
+    }; // Reemplácelo por una función lambda
 
-    private static final ArrayGenerator<Integer> randomArrayGenerator = null; // Reemplácelo por una función lambda
+    private static final ArrayGenerator<Integer> invertedArrayGenerator = (length) -> {
+        Integer[] array = new Integer[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = length - i - 1; // Ahora genera enteros invertidos correctamente
+        }
+        return array;
+    };
 
-    private static final QuickSort<Integer> highPivotQuickSort = null; // Reemplácelo por una referencia a un método
+    private static final ArrayGenerator<Integer> randomArrayGenerator = (length) -> {
+        Integer[] array = new Integer[length];
+        int randomIndex = new Random().nextInt(length) ;
+        for (int i = 0; i < length; i++) {
+            array[i] = Integer.valueOf(randomIndex);
+        }
+        return array;
+    };
+    private static final QuickSort<Integer> highPivotQuickSort = SortingAlgorithms::highPivotQuickSort; // Reemplácelo por una referencia a un método
 
-    private static final QuickSort<Integer> lowPivotQuickSort = null; // Reemplácelo por una referencia a un método
+    private static final QuickSort<Integer> lowPivotQuickSort = SortingAlgorithms::lowPivotQuickSort; // Reemplácelo por una referencia a un método
 
-    private static final QuickSort<Integer> randomPivotQuickSort = null; // Reemplácelo por una referencia a un método
+    private static final QuickSort<Integer> randomPivotQuickSort = SortingAlgorithms::randomPivotQuickSort; // Reemplácelo por una referencia a un método
 
     public static QuickSort<Integer> getHighPivotQuickSort() {
         return highPivotQuickSort;
