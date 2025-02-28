@@ -1,44 +1,63 @@
 package ed.lab;
+import java.util.Random;
 
 public class Main {
-    private static final ArrayGenerator<Integer> sortedArrayGenerator = null; // Reemplácelo por una función lambda
 
-    private static final ArrayGenerator<Integer> invertedArrayGenerator = null; // Reemplácelo por una función lambda
+    private static final ArrayGenerator<String> sortedArrayGenerator = lenght -> {
+        String[] array = new String[lenght];
+        for (int i = 0; i < lenght; i++) {
+            array[i] = String.valueOf(i);
+        };
+        return array;
+    }; // Reemplácelo por una función lambda
 
-    private static final ArrayGenerator<Integer> randomArrayGenerator = null; // Reemplácelo por una función lambda
+    private static final ArrayGenerator<String> invertedArrayGenerator = (length) -> {
+        String[] array = new String[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = String.valueOf((char) ('a' + (length - i - 1)));
+        }
+        return array;
+    };
+    private static final ArrayGenerator<String> randomArrayGenerator = (lenght) -> {
+        String[] array = new String[lenght];
+        int randomIndex = new Random().nextInt(lenght) ;
+        for (int i = 0; i < lenght; i++) {
+            array[i] = String.valueOf(randomIndex);
+        }
+        return array;
+    };
+    private static final QuickSort<String> highPivotQuickSort = SortingAlgorithms::highPivotQuickSort; // Reemplácelo por una referencia a un método
 
-    private static final QuickSort<Integer> highPivotQuickSort = null; // Reemplácelo por una referencia a un método
+    private static final QuickSort<String> lowPivotQuickSort = SortingAlgorithms::lowPivotQuickSort; // Reemplácelo por una referencia a un método
 
-    private static final QuickSort<Integer> lowPivotQuickSort = null; // Reemplácelo por una referencia a un método
+    private static final QuickSort<String> randomPivotQuickSort = SortingAlgorithms::randomPivotQuickSort; // Reemplácelo por una referencia a un método
 
-    private static final QuickSort<Integer> randomPivotQuickSort = null; // Reemplácelo por una referencia a un método
-
-    public static QuickSort<Integer> getHighPivotQuickSort() {
+    public static QuickSort<String> getHighPivotQuickSort() {
         return highPivotQuickSort;
     }
 
-    public static QuickSort<Integer> getLowPivotQuickSort() {
+    public static QuickSort<String> getLowPivotQuickSort() {
         return lowPivotQuickSort;
     }
 
-    public static QuickSort<Integer> getRandomPivotQuickSort() {
+    public static QuickSort<String> getRandomPivotQuickSort() {
         return randomPivotQuickSort;
     }
 
-    public static ArrayGenerator<Integer> getSortedArrayGenerator() {
+    public static ArrayGenerator<String> getSortedArrayGenerator() {
         return sortedArrayGenerator;
     }
 
-    public static ArrayGenerator<Integer> getInvertedArrayGenerator() {
+    public static ArrayGenerator<String> getInvertedArrayGenerator() {
         return invertedArrayGenerator;
     }
 
-    public static ArrayGenerator<Integer> getRandomArrayGenerator() {
+    public static ArrayGenerator<String> getRandomArrayGenerator() {
         return randomArrayGenerator;
     }
 
     public static void main(String[] args) {
-        final SortingTester<Integer> tester = new SortingTester<>();
+        final SortingTester<String> tester = new SortingTester<>();
 
         System.out.println("Ordenando un arreglo ordenado:");
         System.out.println("\tUtilizando el último elemento como pivote: ");
